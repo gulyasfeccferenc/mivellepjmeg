@@ -1,0 +1,12 @@
+{
+  "name": "MivelLepjMeg",
+  "displayName": "MivelLepjMeg",
+  "expo": {
+    "name": "MivelLepjMeg",
+    "slug": "MivelLepjMeg",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
