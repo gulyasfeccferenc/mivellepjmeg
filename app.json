@@ -1,10 +1,15 @@
 {
   "name": "MivelLepjMeg",
-  "displayName": "MivelLepjMeg",
+  "displayName": "Mivel Lepj Meg?",
   "expo": {
     "name": "MivelLepjMeg",
     "slug": "MivelLepjMeg",
     "version": "1.0.0",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "assetBundlePatterns": [
       "**/*"
     ]
