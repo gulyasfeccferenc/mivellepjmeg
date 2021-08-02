@@ -1,16 +1,26 @@
 import React, {useState} from 'react'
-import {View, StyleSheet, Text, Button} from 'react-native'
+import {View, StyleSheet, Text, Button, Platform} from 'react-native'
 import Colors from '../constants/colors';
 
 const WishListScreen = props => {
     const [wishItems, setWishItems] = useState(['My list of items', 'My list of items 2', 'My list of items 3']);
 
     return <View style={styles.screen}>
-        {wishItems.map(item => <View style={styles.wishItem}><Text>{item}</Text></View>)}
+        {wishItems.map((item, index) => <View key={index} style={styles.wishItem}><Text onPress={() => {props.navigation.navigate('WishDetail')}}>{item}</Text></View>)}
         <View style={styles.button}>
-            <Button onPress={() => {console.log('modal should open')}} title={'+'} color={Colors.primary}/>
+            <Button onPress={() => {props.navigation.navigate('WishDetail')}}
+                    title={'+'}
+                    color={Colors.primary}/>
         </View>
     </View>
+}
+
+WishListScreen.navigationOptions = navigationData => {
+    const listName = navigationData.navigation.getParam('pageName');
+
+    return {
+        headerTitle: `${listName}`,
+    }
 }
 
 const styles = StyleSheet.create({
@@ -20,6 +30,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     wishItem: {
+        fontFamily: 'lobster',
         width: '100%',
         padding: 16,
         marginBottom: 8,
