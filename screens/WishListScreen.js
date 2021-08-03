@@ -1,18 +1,25 @@
 import React, {useState} from 'react'
-import {View, StyleSheet, Text, Button, Platform} from 'react-native'
+import {View, StyleSheet, Text, Button, Platform, ImageBackground} from 'react-native'
 import Colors from '../constants/colors';
+import {WISHLISTITEMS} from "../data/dummy-data";
 
 const WishListScreen = props => {
-    const [wishItems, setWishItems] = useState(['My list of items', 'My list of items 2', 'My list of items 3']);
+    const [wishItems, setWishItems] = useState(WISHLISTITEMS);
 
-    return <View style={styles.screen}>
-        {wishItems.map((item, index) => <View key={index} style={styles.wishItem}><Text onPress={() => {props.navigation.navigate('WishDetail')}}>{item}</Text></View>)}
+    return <ImageBackground style={ styles.imgBackground }
+                            resizeMode='cover'  source={require('../assets/mesh_bg.jpg')}>
+        <View style={styles.screen}>
+
+        {wishItems.map((item, index) => <View key={index} style={styles.wishItem}>
+            <Text onPress={() => {props.navigation.navigate('WishDetail', {item: item})}}>{item.name}</Text></View>)}
         <View style={styles.button}>
             <Button onPress={() => {props.navigation.navigate('WishDetail')}}
                     title={'+'}
                     color={Colors.primary}/>
         </View>
+
     </View>
+    </ImageBackground>
 }
 
 WishListScreen.navigationOptions = navigationData => {
@@ -38,6 +45,11 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 80
+    },
+    imgBackground: {
+        width: '100%',
+        height: '100%',
+        flex: 1
     }
 })
 

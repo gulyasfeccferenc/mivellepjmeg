@@ -1,11 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Header from './components/Header';
-import WishListScreen from "./screens/WishListScreen";
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import MLMNavigator from "./extra/MLMNavigator";
+import {enableScreens} from "react-native-screens";
+
+enableScreens();
 
 const fetchFonts = () => {
     return Font.loadAsync({
@@ -25,15 +25,23 @@ export default function App() {
 
     return (
         <View style={styles.container}>
+            <ImageBackground style={ styles.imgBackground }
+                             resizeMode='cover'  source={require('./assets/mesh_bg.jpg')}>
             {/*<StatusBar style="auto" />*/}
             {/*<Header />*/}
-            <MLMNavigator />
+                <MLMNavigator />
+            </ImageBackground>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+    container: {
+        flex: 1,
+    },
+    imgBackground: {
+        width: '100%',
+        height: '100%',
+        flex: 1
+    }
 });

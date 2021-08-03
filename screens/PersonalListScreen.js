@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity, Platform} from "react-native";
+import {View, Text, StyleSheet, FlatList, TouchableOpacity, Platform, ImageBackground} from "react-native";
 import {PERSONAL_LIST_ITEMS} from "../data/dummy-data";
 
 const renderListItems = (currentItem, navigation) => {
@@ -13,11 +13,13 @@ const renderListItems = (currentItem, navigation) => {
 
 const PersonalListScreen = props => {
     return (<View style={styles.screen}>
+        <ImageBackground style={ styles.imgBackground }
+                         resizeMode='cover'  source={require('../assets/mesh_bg.jpg')}>
         <Text>List of my wishlist</Text>
         <View style={styles.categoryContainer}>
             <FlatList data={PERSONAL_LIST_ITEMS}
                       renderItem={(currentItem) => renderListItems(currentItem, props.navigation)} />
-        </View>
+        </View></ImageBackground>
     </View>);
 }
 
@@ -27,7 +29,6 @@ PersonalListScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
     screen: {
-        backgroundColor: 'rgba(51,153,204,0.1)',
         flex: 1
     },
     categoryContainer: {
@@ -41,6 +42,11 @@ const styles = StyleSheet.create({
         minWidth: 300,
         height: 40,
         backgroundColor: 'teal'
+    },
+    imgBackground: {
+        width: '100%',
+        height: '100%',
+        flex: 1
     }
 });
 
