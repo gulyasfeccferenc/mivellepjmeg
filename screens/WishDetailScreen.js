@@ -1,5 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, ImageBackground} from "react-native";
+import {HeaderButtons, Item} from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
 
 const WishDetailScreen = props => {
     const wishItem = props.navigation.getParam('item');
@@ -17,6 +19,9 @@ WishDetailScreen.navigationOptions = navigationData => {
 
     return {
         headerTitle: `${listName.name}`,
+        headerRight: () => <HeaderButtons HeaderButtonComponent={HeaderButton}>
+            <Item title={'Fallbekk'} iconName={'ios-star'} onPress={() => console.log('onFecc')}/>
+        </HeaderButtons>
     }
 }
 
