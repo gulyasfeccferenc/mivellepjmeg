@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity, Platform, ImageBackground} from "react-native";
-import {PERSONAL_LIST_ITEMS} from "../data/dummy-data";
+import {View, Text, StyleSheet, FlatList, TouchableOpacity, ImageBackground} from "react-native";
+import {useSelector} from "react-redux";
 
 const renderListItems = (currentItem, navigation) => {
     return <TouchableOpacity style={styles.categoryButton}
@@ -12,12 +12,13 @@ const renderListItems = (currentItem, navigation) => {
 }
 
 const PersonalListScreen = props => {
+    const listItems = useSelector(state => state.personalList.personalList);
     return (<View style={styles.screen}>
         <ImageBackground style={ styles.imgBackground }
                          resizeMode='cover'  source={require('../assets/mesh_bg.jpg')}>
         <Text>List of my wishlist</Text>
         <View style={styles.categoryContainer}>
-            <FlatList data={PERSONAL_LIST_ITEMS}
+            <FlatList data={listItems}
                       renderItem={(currentItem) => renderListItems(currentItem, props.navigation)} />
         </View></ImageBackground>
     </View>);

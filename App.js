@@ -4,8 +4,17 @@ import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import MLMNavigator from "./extra/MLMNavigator";
 import {enableScreens} from "react-native-screens";
+import personalListReducer from "./store/reducers/personal_list";
+import { createStore, combineReducers } from 'redux';
+import {Provider} from "react-redux";
 
 enableScreens();
+
+const rootReducer = combineReducers({
+    personalList: personalListReducer,
+});
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
     return Font.loadAsync({
@@ -24,14 +33,16 @@ export default function App() {
     }
 
     return (
-        <View style={styles.container}>
-            <ImageBackground style={ styles.imgBackground }
-                             resizeMode='cover'  source={require('./assets/mesh_bg.jpg')}>
-            {/*<StatusBar style="auto" />*/}
-            {/*<Header />*/}
-                <MLMNavigator />
-            </ImageBackground>
-        </View>
+        <Provider store={store}>
+            <View style={styles.container}>
+                <ImageBackground style={ styles.imgBackground }
+                                 resizeMode='cover'  source={require('./assets/mesh_bg.jpg')}>
+                {/*<StatusBar style="auto" />*/}
+                {/*<Header />*/}
+                    <MLMNavigator />
+                </ImageBackground>
+            </View>
+        </Provider>
     );
 }
 
