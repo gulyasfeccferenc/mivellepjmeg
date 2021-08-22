@@ -9,7 +9,7 @@ export const PERSONAL_LIST_ITEMS = [
     new PersonalList('pl4', 'Ha bárki szeretne meglepni', 'Bármikor!', Colors.highlight),
 ]
 
-export const WISHLISTITEMS = [
+export const WISHLIST_ITEMS = [
     new WishListItem('wl1', 'Árvíztűrő tükörfúrógép', 'A magyar nyelvő fontok legékesebb példamondata', '', '', '', true, Colors.primary),
     new WishListItem('wl2', 'Mountenbike', 'Ferikének légyszives', '', '', '', true, Colors.primary),
     new WishListItem('wl3', 'PlayStation 5', 'Haladni kell a korral', '', '', '', true, Colors.primary),

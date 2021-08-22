@@ -5,6 +5,7 @@ import AppLoading from 'expo-app-loading';
 import MLMNavigator from "./extra/MLMNavigator";
 import {enableScreens} from "react-native-screens";
 import personalListReducer from "./store/reducers/personal_list";
+import wishListReducer from "./store/reducers/wishlist_item";
 import { createStore, combineReducers } from 'redux';
 import {Provider} from "react-redux";
 
@@ -12,6 +13,7 @@ enableScreens();
 
 const rootReducer = combineReducers({
     personalList: personalListReducer,
+    wishList: wishListReducer
 });
 
 const store = createStore(rootReducer);

@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
-import {View, StyleSheet, Text, Button, Platform, ImageBackground} from 'react-native'
+import React from 'react'
+import {View, StyleSheet, Text, Button,ImageBackground} from 'react-native'
 import Colors from '../constants/colors';
-import {WISHLISTITEMS} from "../data/dummy-data";
+import {useSelector} from "react-redux";
 
 const WishListScreen = props => {
-    const [wishItems, setWishItems] = useState(WISHLISTITEMS);
+    const listItems = useSelector(state => state.wishList.wishList);
 
     return <ImageBackground style={ styles.imgBackground }
                             resizeMode='cover'  source={require('../assets/mesh_bg.jpg')}>
         <View style={styles.screen}>
 
-        {wishItems.map((item, index) => <View key={index} style={styles.wishItem}>
+        {listItems.map((item, index) => <View key={index} style={styles.wishItem}>
             <Text onPress={() => {props.navigation.navigate('WishDetail', {item: item})}}>{item.name}</Text></View>)}
         <View style={styles.button}>
             <Button onPress={() => {props.navigation.navigate('WishDetail')}}
